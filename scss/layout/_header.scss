@@ -1,5 +1,10 @@
+html{
+    background-color: pink;
+}
 .header{
-    background-color: cyan;
+    background-color: $clr-light;
+    position: fixed;
+    width: 100%;
     &__wrapper{
         padding: 1.5rem 0;
     }
@@ -14,18 +19,151 @@
                 img{
                     margin-left: 2rem;
                     padding-top: .3rem;
-                    
+                }
+            }
+            .left__nav{
+                background-color: $clr-light;
+                position: absolute;
+                max-width: 60%;
+                width: 0;
+                left: 0;
+                padding: 2rem 0;
+                top: 3.8rem;
+                overflow: hidden;
+                height: 100vh;
+                z-index: -1;
+                transition: .6s ease;
+                .socmed__icons{
+                    padding: 2.7rem 0;
+                    color: $clr-dark;
+                    border-bottom: 1px solid $clr-gray;
+                    ul{
+                        display: flex;
+                        justify-content: center;
+                        
+                        li{
+                            margin: 0 1.2rem;
+                            a{
+                                &:hover{
+                                    transition: .3s ease-in-out;
+                                    color: $clr-primary;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__tabs{
+                    padding: 2rem 0;
+                    font-size: 14px;
+                    .nav__tabs{
+                        .tabs__item{
+                            &:first-child{
+                                background-color: $clr-primary;
+                                color: $clr-light
+                            }
+                            h4{
+                                padding: 1.5rem;
+                                margin-bottom: .5rem;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                transition: .3s ease;
+                                &:hover{
+                                    background-color: $clr-primary;
+                                    color: $clr-light;
+                                    transition: inherit;
+                                    &.open{
+                                        background-color: $clr-primary;
+                                    }
+                                }
+                                i{
+                                    transition: .3s ease;
+                                    cursor: pointer;
+                                    &.open{
+                                        transform: rotate(-180deg);
+                                        transition: .3s ease;
+                                    }
+                                }
+                            }
+                            ul{
+                                max-height: 0;
+                                overflow: hidden;
+                                li{
+                                    padding-left: 1rem;
+                                    padding: 1.5rem;
+                                    margin-bottom: .5rem;
+                                    transition: .3s ease;
+                                    a{
+                                        padding-left: 1.5rem;
+                                    }
+                                    &:hover{
+                                        transition: .3s ease;
+                                        background-color: $clr-primary;
+                                        a{
+                                            transition: .3s ease;
+                                            color: $clr-light;
+                                        }
+                                        
+                                    }
+                                }
+                                &.open{
+                                    max-height: 50rem;
+                                    transition: .3s ease;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+                &.open{
+                    width: 100%;
+                    transition: .6s ease;
+
                 }
             }
         }
         &__right{
+            // position: relative;
             .right__nav{
-                display: none;
+                opacity: 0;
+                padding: 2.5rem 2rem;
+                position: absolute;
+                right: 0;
+                background-color: $clr-light;
+                top: 9rem;
+                transition: .5s ease;
+                p{
+                    margin-bottom: 1.5rem;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: .1rem;
+                    display: flex;
+                    align-items: center;
+                    i{
+                        font-size: 20px;
+                        margin-right: 2rem;
+                        color: $clr-primary;
+                    }
+                }
+                button{
+                    padding: 1.18rem 3.6rem;
+                    border: 2px solid $clr-primary;
+                    font-weight: 600;
+
+
+                }
+                &.open{
+                    transform: translateY(-3.2rem);
+                    transition: .5s ease;
+                    opacity: 1;
+                }
+                
             }
         }
     }
     
-    .toggle__bar span{
+    .toggle__bar
+    span {
         width: 2.3rem;
         height: .3rem;
         background-color: $clr-dark;
@@ -39,49 +177,201 @@
     }
     .toggle__bar.open span:first-child{
         transform: translate(0, 10px);
+        margin-bottom: .75rem;
         transition: .5s ease;
     }
-    .toggle__bar.open span:nth-child(2){   
-        opacity: 0;
+    .toggle__bar.open span:nth-child(2){ 
+        transform: rotate(180deg);
         transition: .5s ease;
+        // opacity: 0;
     }
     .toggle__bar.open span:last-child{
         transform: translate(0, -6px);
         transition: .5s ease;    
+
     }
-    .toggle__dot span{
-        width: .6rem;
-        height: .6rem;
-        background-color: $clr-dark;
-        display: block;
-        margin-bottom: .4rem;
-        border-radius: 50%;
-        transition: .5s ease;
-        &:last-child{
-            margin-bottom: 0;
+    .toggle__dot{
+        padding: 1.6rem;
+        position: absolute;
+        cursor: pointer;
+        top: 0rem;
+        right: .5rem;
+        span{
+            width: .6rem;
+            height: .6rem;
+            background-color: $clr-dark;
+            display: block;
+            margin-bottom: .4rem;
+            border-radius: 50%;
+            transition: .5s ease;
+            &:last-child{
+                margin-bottom: 0;
+            }
         }
     }
     .toggle__dot.open span:first-child{
-        transform: translate(0, 10px);
+        transform: translate(0, 14px);
         transition: .5s ease;
+        width: .4rem;
+        height: .4rem;
     }
-    .toggle__dot.open span:nth-child(2){  
-        opacity: 0;
+    .toggle__dot.open span:nth-child(2){
+        margin-bottom: unset;
         transition: .5s ease;
+        width: .4rem;
+        height: .4rem;
     }
     .toggle__dot.open span:last-child{
-        transform: translate(0, -6px);
-        transition: .5s ease;   
+        transform: translate(0, -10px);
+        transition: .5s ease;
+        width: .4rem;
+        height: .4rem;   
+    }
+    &__main__2{
+        display: none;
     }
 
-    .left__nav{
-        background-color: orange;
-        max-width: 60%;
-        .socmed__icons{
-            color: $clr-dark;
-            ul{
+
+    @include mediaQuery($desktop){
+        position: relative;
+        &__wrapper{
+            padding: 2.8rem 0;
+        }
+        &__top{
+            &__left{
+                .toggle__bar{
+                    display: none;
+                }
+                .branding{
+                    // position: relative;
+                    img{
+                        width: 188px;
+                        margin-left: unset;
+                    }
+                }
+                .left__nav{
+                    display: none;
+                }
+            }
+            &__right{
+                .right__nav{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    opacity: 1;
+                    top: 0;
+                    background: transparent;
+                    padding: 0;
+                    p{
+                        margin-bottom: 0;
+                        padding: 0.5rem 3.5rem;
+                        &:nth-child(2){
+                            border-left: 1px solid $clr-gray;
+                            &:hover{
+                                color: $clr-green;
+                                cursor: pointer;
+                                transition: .5s ease;
+                            }
+                        }
+                        
+                    }
+                    button{
+                        padding: 1.4rem 3.2rem;
+                        border: 2px solid $clr-primary;
+                        font-weight: 600;
+                    }
+                }
+                .toggle__dot{
+                    position: relative;
+                    display: none;
+                }
+            }
+
+        }
+        &__main__2{
+            display: block;
+            position: relative;
+            width: 100%;
+            background-color: $clr-darkblue;
+            .header__bottom{
+                max-width: 122rem;
+                margin: 0 auto;
+                padding: 0 2rem;
+                position: relative;
+            }
+            .bottom__nav{
                 display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                color: $clr-light;
+                .socmed__icons__bot{
+                    ul{
+                        display: flex;
+                        li{
+                            margin-left: 2.2rem;
+                            a{
+                                font-size: 18px;
+                                color: $clr-light;
+                                &:hover{
+                                    color: $clr-green;
+                                    cursor: pointer;
+                                    transition: .5s ease;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+                .bottom__nav__tabs{
+                    .nav__tabs__bot{
+                        display: flex;
+                        gap: 1.5rem;
+                        .tabs__item__bot{
+                            padding: 2rem;
+                            
+                            h4{
+                                span{
+                                    font-weight: 600;
+                                    letter-spacing: .1rem;
+                                }
+                                i{
+                                    display: none;
+                                }
+                            }
+                            ul{
+                                position: absolute;
+                                padding: 2rem 2rem 2rem 3rem;
+                                width: 29rem;
+                                background-color: $clr-light;
+                                transform: translate(-2rem, 5rem);
+                                // top: 0;
+                                li{
+                                    padding: .5rem 0;
+                                    cursor: pointer;
+                                    padding-left: 0rem;
+                                    transition: .5s ease;
+                                    &:hover{
+                                        border-left: 2px solid transparent;
+                                        a{
+                                            transform: translateX(1.5rem);
+                                        }
+                                                                                
+                                    }
+                                    a{
+                                        font-size: 14px;
+                                        padding: .5rem 0;
+                                        padding-left: 2rem;
+                                        color:$clr-dark;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+        
     }
 }
